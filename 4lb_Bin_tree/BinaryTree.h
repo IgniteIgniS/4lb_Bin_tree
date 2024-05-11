@@ -15,7 +15,7 @@ private:
     Node* createNode(int data);
     Node* insertNode(Node* root, int data);
     void printTree(Node* root);
-    void print2DUtil(Node* root, int space);
+    void print2D(Node* root, int space);
     void deleteTree(Node* node);
     Node* minValueNode(Node* node);
     Node* maxValueNode(Node* node);

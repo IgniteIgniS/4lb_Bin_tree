@@ -45,18 +45,18 @@ void BinaryTree::printTree(Node* root)
     printTree(root->right);
 }
 
-void BinaryTree::print2DUtil(Node* root, int space){
+void BinaryTree::print2D(Node* root, int space){
     int COUNT = 5;
     if (root == nullptr) return;
     space += COUNT;
-    print2DUtil(root->right, space);
+    print2D(root->right, space);
     std::cout << std::endl;
     for (int i = 0; i < space ; i++) 
     {
         std::cout << "  ";
     }
     std::cout << root->data << "\n";
-    print2DUtil(root->left, space);
+    print2D(root->left, space);
 }
 
 void BinaryTree::deleteTree(Node* node)
@@ -180,7 +180,7 @@ void BinaryTree::sortedPrint()
 }
 void BinaryTree::print2D()
 {
-    print2DUtil(root, 5);
+    print2D(root, 5);
 }
 void BinaryTree::GetMinElem()
 {
