@@ -12,10 +12,9 @@ int main()
 	//std::cout << "Removed:"; tree.remove(6);
 	std::cout << "Binary Tree height:"; tree.GetHeight(); std::cout << "\n";
 	std::cout << "Binary Tree BFS:"; tree.BFS();
-	//std::cout << "Min element of tree:";
-	//tree.GetMinElem();
-	std::cout << "\n"; std::cout << "Element found?:";
-	tree.findElement(1);
+	tree.GetMinElem();
+	//std::cout << "\n"; std::cout << "Element found?:";
+	//tree.findElement(1);
 
 }
 

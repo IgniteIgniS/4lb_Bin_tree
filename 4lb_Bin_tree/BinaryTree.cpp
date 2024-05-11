@@ -184,11 +184,11 @@ void BinaryTree::GetMinElem()
     Node* minNode = minValueNode(root);
     if (minNode != nullptr)
     {
-        std::cout << "Минимальный элемент: " << minNode->data << std::endl;
+        std::cout << "Min element: " << minNode->data << std::endl;
     }
     else
     {
-        std::cout << "Дерево пусто." << std::endl;
+        std::cout << "Tree is empty!" << std::endl;
     }
 }
 void BinaryTree::GetMaxElem()
@@ -196,11 +196,11 @@ void BinaryTree::GetMaxElem()
     Node* maxNode = maxValueNode(root);
     if (maxNode != nullptr)
     {
-        std::cout << "Максимальный элемент: " << maxNode->data << std::endl;
+        std::cout << "Max element: " << maxNode->data << std::endl;
     }
     else
     {
-        std::cout << "Дерево пусто." << std::endl;
+        std::cout << "Tree is empty!" << std::endl;
     }
 }
 void BinaryTree::GetHeight()
