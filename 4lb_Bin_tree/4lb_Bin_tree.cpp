@@ -14,7 +14,8 @@ int main()
 	std::cout << "Binary Tree BFS:"; tree.BFS();
 	//std::cout << "Min element of tree:";
 	//tree.GetMinElem();
-
+	std::cout << "\n"; std::cout << "Element found?:";
+	tree.findElement(1);
 
 }
 

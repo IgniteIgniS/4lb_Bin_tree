@@ -21,7 +21,7 @@ private:
     Node* maxValueNode(Node* node);
     int findHeight(Node* node);
     Node* deleteNode(Node* root, int key);
-    bool findElement(Node* node, int value);
+    void findElement(Node* node, int value);
 
 public:
     BinaryTree();
@@ -34,7 +34,7 @@ public:
     void GetMinElem();
     void GetMaxElem();
     void GetHeight();
-    bool findElement(int value);
+    void findElement(int value);
 
     void BFS();
 };

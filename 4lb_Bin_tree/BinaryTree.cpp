@@ -63,11 +63,8 @@ void BinaryTree::deleteTree(Node* node)
 {
     if (node == nullptr) return;
 
-    /* first delete both subtrees */
     deleteTree(node->left);
     deleteTree(node->right);
-
-    /* then delete the node */
     delete node;
 }
 
@@ -135,15 +132,15 @@ Node* BinaryTree::deleteNode(Node* root, int key)
     return root;
 }
 
-bool BinaryTree::findElement(Node* node, int value)
+void BinaryTree::findElement(Node* node, int value)
 {
     if (node == nullptr)
     {
-        return false;
+        std::cout << "n";
     }
     else if (node->data == value)
     {
-        return true;
+        std::cout << "y";
     }
     else if (value < node->data)
     {
@@ -194,7 +191,6 @@ void BinaryTree::GetMinElem()
         std::cout << "Дерево пусто." << std::endl;
     }
 }
-
 void BinaryTree::GetMaxElem()
 {
     Node* maxNode = maxValueNode(root);
@@ -211,7 +207,7 @@ void BinaryTree::GetHeight()
 {
     std::cout << findHeight(root);
 }
-bool BinaryTree::findElement(int value)
+void BinaryTree::findElement(int value)
 {
     return findElement(root, value);
 }
