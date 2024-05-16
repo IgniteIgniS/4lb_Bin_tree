@@ -1,16 +1,12 @@
 #include "Binarytree.h"
 #include <iostream>
 #include <queue>
+#include <vector>
 
 
 Node* BinaryTree::createNode(int data)
 {
     Node* newNode = new Node();
-    if (!newNode)
-    {
-        std::cout << "Memory error\n";
-        return nullptr;
-    }
     newNode->data = data;
     newNode->left = nullptr;
     newNode->right = nullptr;
@@ -152,6 +148,42 @@ void BinaryTree::findElement(Node* node, int value)
     }
 }
 
+Node* BinaryTree::copyTree(Node* node)
+{
+    if (node == nullptr) return nullptr;
+
+    Node* newNode = createNode(node->data);
+    newNode->left = copyTree(node->left);
+    newNode->right = copyTree(node->right);
+    return newNode;
+}
+
+
+
+
+
+void BinaryTree::DFS(Node* node, std::vector<int>& result) {
+    if (node == nullptr) return;
+    result.push_back(node->data);
+    DFS(node->left, result);
+    DFS(node->right, result);
+}
+void BinaryTree::BFS(std::vector<Node*>& nodes, std::vector<int>& result) {
+    if (nodes.empty()) return;
+
+    std::vector<Node*> nextLevel;
+    for (Node* node : nodes) {
+        result.push_back(node->data);
+        if (node->left != nullptr)
+            nextLevel.push_back(node->left);
+        if (node->right != nullptr)
+            nextLevel.push_back(node->right);
+    }
+    BFS(nextLevel, result);
+}
+
+
+
 //public
 
 BinaryTree::BinaryTree()
@@ -161,6 +193,19 @@ BinaryTree::BinaryTree()
 BinaryTree::~BinaryTree()
 {
     deleteTree(root);
+}
+
+BinaryTree::BinaryTree(const BinaryTree& other)
+{
+    root = copyTree(other.root);
+}
+BinaryTree& BinaryTree::operator=(const BinaryTree& other)
+{
+    if (this == &other) return *this; // self-assignment check
+
+    deleteTree(root); // delete current tree
+    root = copyTree(other.root); // copy new tree
+    return *this;
 }
 
 void BinaryTree::insert(int data)
@@ -211,32 +256,46 @@ void BinaryTree::findElement(int value)
 {
     return findElement(root, value);
 }
-void BinaryTree::BFS()
+//void BinaryTree::BFS()
+//{
+//    if (root == nullptr)
+//    {
+//        return;
+//    }
+//
+//    std::queue<Node*> nodes;
+//    nodes.push(root);
+//
+//    while (!nodes.empty())
+//    {
+//        Node* currNode = nodes.front();
+//        nodes.pop();
+//
+//        std::cout << currNode->data << " ";
+//
+//        if (currNode->left != nullptr)
+//        {
+//            nodes.push(currNode->left);
+//        }
+//
+//        if (currNode->right != nullptr)
+//        {
+//            nodes.push(currNode->right);
+//        }
+//    }
+//}
+
+std::vector<int> BinaryTree::DFS() 
 {
-    if (root == nullptr)
-    {
-        return;
-    }
-
-    std::queue<Node*> nodes;
-    nodes.push(root);
-
-    while (!nodes.empty())
-    {
-        Node* currNode = nodes.front();
-        nodes.pop();
-
-        std::cout << currNode->data << " ";
-
-        if (currNode->left != nullptr)
-        {
-            nodes.push(currNode->left);
-        }
-
-        if (currNode->right != nullptr)
-        {
-            nodes.push(currNode->right);
-        }
-    }
+    std::vector<int> result;
+    DFS(root, result);
+    return result;
 }
-
+std::vector<int> BinaryTree::BFS() 
+{
+    std::vector<Node*> currentLevel;
+    std::vector<int> result;
+    currentLevel.push_back(root);
+    BFS(currentLevel, result);
+    return result;
+}

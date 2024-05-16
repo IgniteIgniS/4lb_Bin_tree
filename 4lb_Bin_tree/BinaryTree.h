@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <vector>
+
 struct Node
 {
     int data;
@@ -23,9 +26,20 @@ private:
     Node* deleteNode(Node* root, int key);
     void findElement(Node* node, int value);
 
+    Node* copyTree(Node* node);
+
+
+
+    void DFS(Node* node, std::vector<int>& result);
+    void BFS(std::vector<Node*>& nodes, std::vector<int>& result);
+
+
 public:
     BinaryTree();
     ~BinaryTree();
+
+    BinaryTree& operator=(const BinaryTree& other);
+    BinaryTree(const BinaryTree& other);
 
     void insert(int data);
     void remove(int key);
@@ -36,6 +50,9 @@ public:
     void GetHeight();
     void findElement(int value);
 
-    void BFS();
+    std::vector<int> DFS();
+    std::vector<int> BFS();
+
+
 };
 
